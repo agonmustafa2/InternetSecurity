@@ -115,3 +115,49 @@ class GUI:
         self.mesazhi.delete(0, END) 
         snd= threading.Thread(target = self.sendMessage) 
         snd.start() 
+
+
+
+   #___________________________________________________________________________________________________________________________________
+
+
+    #marrja e mesazheve
+    def receive(self): 
+        while True: 
+            try: 
+                message = client.recv(1024).decode(FORMAT) 
+                  
+                # if the messages from the server is NAME send the client's name 
+                if message == 'NAME': 
+                    client.send(self.name.encode(FORMAT)) 
+                else: 
+                    #shtimi i mesazheve n text box
+                    self.teksti.config(state = NORMAL) 
+                    self.teksti.insert(END, 
+                                         message+"\n\n") 
+                      
+                    self.teksti.config(state = DISABLED) 
+                    self.teksti.see(END) 
+            except: 
+                #printimi i errorit nese ka
+                print("An error occured!") 
+                client.close() 
+                break 
+    
+  
+  
+    #dergimi i mesazheve
+    def sendMessage(self): 
+        self.teksti.config(state=DISABLED)
+       
+        while True: 
+            message = (f"{self.name}: {self.msg}") 
+            key=Fernet(b'a4_HiTfMOLpUCpa8vX0ypusxEP0-Jz8FfDhqpakXYiw=')
+         
+            enkriptimi=key.encrypt(message.encode())
+            client.send(enkriptimi)   
+            break    
+  
+# create a GUI class object 
+g = GUI() 
+
