@@ -1,4 +1,4 @@
-#importimi i librarive te nevojshme
+ #importimi i librarive te nevojshme
 from cryptography.fernet import Fernet
 import socket 
 import threading 
@@ -17,9 +17,7 @@ server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 #e bind adresen  e seeverit ne soket 
 server.bind(ADDRESS) 
-
-
-
+  
 #fillimi i konektimit
 def startChat(): 
     
@@ -56,3 +54,29 @@ def startChat():
         #numri i klientave te konektuar
         print(f"Numri koneksioneve aktive {threading.activeCount()-1}") 
   
+#handles mesazhet qe jan duke ardhe
+def handle(conn, addr): 
+    
+    print(f"Koneksioni ri {addr}") 
+    connected = True
+      
+    while connected: 
+        #prano mesazhin 
+        message = conn.recv(1024) 
+        key=Fernet(b'a4_HiTfMOLpUCpa8vX0ypusxEP0-Jz8FfDhqpakXYiw=')
+        dekriptimi=key.decrypt(message)
+          
+        #transmeton mesazhin
+        broadcastMessage(dekriptimi) 
+     
+      
+    #mbyll konektimin
+    conn.close() 
+  
+#metoda per transmetim te te gjitha mesazheve
+def broadcastMessage(message): 
+    for client in clients: 
+        client.send(message) 
+  
+#fillon komunikimin
+startChat() 
