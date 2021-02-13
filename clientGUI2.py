@@ -4,7 +4,7 @@ import socket
 import threading 
 
   
-PORT = 9000   
+PORT = 12000 
 SERVER = 'localhost' 
 ADDRESS = (SERVER, PORT) 
 FORMAT = "utf-8"
