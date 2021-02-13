@@ -9,4 +9,4 @@ Për enkriptim kemi perdorur llojin e enkriptimit FERNET e cili na mundeson enkr
 
 Test Case: Fillimisht hapen të gjitha filet. Pastaj vazhdohet me ekzekutimit të kodit në file-in serverGUI.py, që sinjalizon se këta dy klientë janë te gatshem për konektim. Pas kësaj hapet file clientGUI.py i cili përmban edhe pjesën e kodit në tkinter pra përmban GUI-n, kod ky i cili mundëson që dy klientat  që ishin të gatshem për tu lidhur paraprakisht, lidhen dhe kanë mundesine e dërgimit të mesazheve te njëri-tjetri. Pas shkrimit të mesazhit nga njëri ose tjetri klient në momentin e shtypjes së butonit SEND mesazhi enkriptohet përmes FERNET dhe si i tillë dërgohet te klienti tjëter. Në këtë mënyrë pra bëhet marrja dhe dergimi i mesazheve deri sa njeri prej klienteve vendos që të largohet nga chat-i(linja).
 
-Note: Llogaritë agonmustafa1 dhe agonmustafa2 në github jane te personit tëv njejte, mirepo gabimisht është postuar kodi përmes dy llogarive të ndryshme.
+Note: Llogaritë agonmustafa1 dhe agonmustafa2 në github jane te personit tëv njejte, mirepo gabimisht është postuar kod përmes dy llogarive të ndryshme.
