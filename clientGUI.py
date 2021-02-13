@@ -1,4 +1,4 @@
-#pjesa e serverit
+
 #importimi i librarive te nevojshme
 from cryptography.fernet import Fernet
 from tkinter import *
